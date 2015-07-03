@@ -8,8 +8,10 @@ defmodule Pdf2htmlex do
   def last_page(opts, last) when is_list(opts) and is_integer(last), do: ["--last-page", i_to_s(last)] ++ opts
   def fit_width(opts, width) when is_list(opts) and is_integer(width), do: ["--fit-width", i_to_s(width)] ++ opts
   def fit_height(opts, height) when is_list(opts) and is_integer(height), do: ["--fit-height", i_to_s(height)] ++ opts
-  def use_mediabox(opts) when is_list(opts), do: ["--use-cropbox", 0] ++ opts
-  
+  def use_mediabox(opts) when is_list(opts), do: ["--use-cropbox", "0"] ++ opts
+  def hdpi(opts, dpi) when is_list(opts) and is_integer(dpi), do: ["--hdpi", i_to_s(dpi)] ++ opts
+  def vdpi(opts, dpi) when is_list(opts) and is_integer(dpi), do: ["--vdpi", i_to_s(dpi)] ++ opts
+
   defp exec_cmd(opts) do
     cmd = System.find_executable("pdf2htmlex")
     System.cmd(cmd, opts, stderr_to_stdout: true)
