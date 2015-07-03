@@ -12,12 +12,6 @@ defmodule Pdf2htmlexTest do
     assert File.exists?(tmp_dir <> "simple.html")
   end
 
-  test "convert with zoom" do
-    tmp_dir = rnd_tmp_dir
-    open(@simple_pdf) |> zoom(2.0) |> convert_to!(tmp_dir)
-    assert File.exists?(tmp_dir <> "simple.html")
-  end
-
   test "convert with all options" do
     tmp_dir = rnd_tmp_dir
     open(@with_images)
