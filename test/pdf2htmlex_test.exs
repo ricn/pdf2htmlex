@@ -1,37 +1,30 @@
 defmodule Pdf2htmlexTest do
   use ExUnit.Case
-
+  import Pdf2htmlex
   @simple_pdf Path.join(__DIR__, "fixtures/simple.pdf")
 
-  test ".convert with defaults" do
+  test ".convert" do
     tmp_dir = rnd_tmp_dir
-    Pdf2htmlex.open(@simple_pdf)
-    |> Pdf2htmlex.save_to(tmp_dir)
-    |> Pdf2htmlex.convert
-
+    open(@simple_pdf) |> save_to(tmp_dir) |> convert
     assert File.exists?(tmp_dir <> "simple.html")
   end
 
   test ".convert with zoom" do
     tmp_dir = rnd_tmp_dir
-    Pdf2htmlex.open(@simple_pdf)
-    |> Pdf2htmlex.zoom(2.0)
-    |> Pdf2htmlex.save_to(tmp_dir)
-    |> Pdf2htmlex.convert
-
+    open(@simple_pdf) |> zoom(2.0) |> save_to(tmp_dir) |> convert
     assert File.exists?(tmp_dir <> "simple.html")
   end
 
   test ".open" do
-    assert [@simple_pdf] == Pdf2htmlex.open(@simple_pdf)
+    assert [@simple_pdf] == open(@simple_pdf)
   end
 
   test ".zoom" do
-    assert ["--zoom", "2.0"] == Pdf2htmlex.zoom([], 2.0)
+    assert ["--zoom", "2.0"] == zoom([], 2.0)
   end
 
   test ".save_to" do
-    assert ["--dest-dir", "/tmp"] == Pdf2htmlex.save_to([], "/tmp")
+    assert ["--dest-dir", "/tmp"] == save_to([], "/tmp")
   end
 
   defp rnd_tmp_dir do
