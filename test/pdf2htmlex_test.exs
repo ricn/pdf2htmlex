@@ -2,6 +2,7 @@ defmodule Pdf2htmlexTest do
   use ExUnit.Case
   import Pdf2htmlex
   @simple_pdf Path.join(__DIR__, "fixtures/simple.pdf")
+  @multi_page_pdf Path.join(__DIR__, "fixtures/multi_page.pdf")
 
   test "simplest conversion possible" do
     tmp_dir = rnd_tmp_dir
@@ -13,6 +14,12 @@ defmodule Pdf2htmlexTest do
     tmp_dir = rnd_tmp_dir
     open(@simple_pdf) |> zoom(2.0) |> save_to(tmp_dir) |> convert!
     assert File.exists?(tmp_dir <> "simple.html")
+  end
+
+  test "convert with first page and last page set" do
+    tmp_dir = rnd_tmp_dir
+    open(@multi_page_pdf) |> first_page(2) |> last_page(4) |> save_to(tmp_dir) |> convert!
+    assert File.exists?(tmp_dir <> "multi_page.html")
   end
 
   test ".open" do
