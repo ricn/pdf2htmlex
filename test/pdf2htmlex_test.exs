@@ -31,8 +31,8 @@ defmodule Pdf2htmlexTest do
     |> use_mediabox
     |> convert_to!(tmp_dir)
 
-    files = ["with_images.html", "with_images.css", "pdf2htmlEX.min.js",
-             "bg1.png", "f1.woff", "with_images.outline", "with_images1.page", "with_images2.page"]
+    files = ~w(with_images.html with_images.css pdf2htmlEX.min.js bg1.png
+    f1.woff with_images.outline with_images1.page with_images2.page)
     Enum.each(files, fn(f) -> assert File.exists?(tmp_dir <> f) end)
   end
 
