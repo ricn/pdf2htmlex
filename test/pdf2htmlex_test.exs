@@ -24,6 +24,8 @@ defmodule Pdf2htmlexTest do
     |> zoom(2.0)
     |> first_page(1)
     |> last_page(2)
+    |> hdpi(44)
+    |> vdpi(44)
     |> fit_width(640)
     |> fit_height(480)
     |> externalize_css
@@ -32,15 +34,12 @@ defmodule Pdf2htmlexTest do
     |> externalize_javascript
     |> externalize_outline
     |> split_pages
+    |> use_mediabox
     |> convert_to!(tmp_dir)
-    assert File.exists?(tmp_dir <> "with_images.html")
-    assert File.exists?(tmp_dir <> "with_images.css")
-    assert File.exists?(tmp_dir <> "pdf2htmlEX.min.js")
-    assert File.exists?(tmp_dir <> "bg1.png")
-    assert File.exists?(tmp_dir <> "f1.woff")
-    assert File.exists?(tmp_dir <> "with_images.outline")
-    assert File.exists?(tmp_dir <> "with_images1.page")
-    assert File.exists?(tmp_dir <> "with_images2.page")
+
+    files = ["with_images.html", "with_images.css", "pdf2htmlEX.min.js",
+             "bg1.png", "f1.woff", "with_images.outline", "with_images1.page", "with_images2.page"]
+    Enum.each(files, fn(f) -> assert File.exists?(tmp_dir <> f) end)
   end
 
   test ".open", do: assert [@simple_pdf] == open(@simple_pdf)
