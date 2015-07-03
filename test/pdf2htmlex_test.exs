@@ -3,15 +3,15 @@ defmodule Pdf2htmlexTest do
   import Pdf2htmlex
   @simple_pdf Path.join(__DIR__, "fixtures/simple.pdf")
 
-  test ".convert" do
+  test "simplest conversion possible" do
     tmp_dir = rnd_tmp_dir
-    open(@simple_pdf) |> save_to(tmp_dir) |> convert
+    open(@simple_pdf) |> save_to(tmp_dir) |> convert!
     assert File.exists?(tmp_dir <> "simple.html")
   end
 
-  test ".convert with zoom" do
+  test "convert with zoom" do
     tmp_dir = rnd_tmp_dir
-    open(@simple_pdf) |> zoom(2.0) |> save_to(tmp_dir) |> convert
+    open(@simple_pdf) |> zoom(2.0) |> save_to(tmp_dir) |> convert!
     assert File.exists?(tmp_dir <> "simple.html")
   end
 
