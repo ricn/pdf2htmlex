@@ -28,33 +28,13 @@ defmodule Pdf2htmlexTest do
     assert File.exists?(tmp_dir <> "simple.html")
   end
 
-  test ".open" do
-    assert [@simple_pdf] == open(@simple_pdf)
-  end
-
-  test ".save_to" do
-    assert ["--dest-dir", "/tmp"] == save_to([], "/tmp")
-  end
-
-  test ".zoom" do
-    assert ["--zoom", "2.0"] == zoom([], 2.0)
-  end
-
-  test ".first_page" do
-    assert ["--first-page", "2"] == first_page([], 2)
-  end
-
-  test ".last_page" do
-    assert ["--last-page", "5"] == last_page([], 5)
-  end
-
-  test ".fit_width" do
-    assert ["--fit-width", "1024"] == fit_width([], 1024)
-  end
-
-  test ".fit_height" do
-    assert ["--fit-height", "768"] == fit_height([], 768)
-  end
+  test ".open", do: assert [@simple_pdf] == open(@simple_pdf)
+  test ".save_to", do: assert ["--dest-dir", "/tmp"] == save_to([], "/tmp")
+  test ".zoom", do: assert ["--zoom", "2.0"] == zoom([], 2.0)
+  test ".first_page", do: assert ["--first-page", "2"] == first_page([], 2)
+  test ".last_page", do: assert ["--last-page", "5"] == last_page([], 5)
+  test ".fit_width", do: assert ["--fit-width", "1024"] == fit_width([], 1024)
+  test ".fit_height", do: assert ["--fit-height", "768"] == fit_height([], 768)
 
   defp rnd_tmp_dir do
     dir = System.tmp_dir! <> "/" <> SecureRandom.uuid <> "/"
