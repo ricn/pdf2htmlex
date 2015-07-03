@@ -11,6 +11,12 @@ defmodule Pdf2htmlex do
   def use_mediabox(opts) when is_list(opts), do: ["--use-cropbox", "0"] ++ opts
   def hdpi(opts, dpi) when is_list(opts) and is_integer(dpi), do: ["--hdpi", i_to_s(dpi)] ++ opts
   def vdpi(opts, dpi) when is_list(opts) and is_integer(dpi), do: ["--vdpi", i_to_s(dpi)] ++ opts
+  def externalize_css(opts) when is_list(opts), do: ["--embed-css", "0"] ++ opts
+  def externalize_font(opts) when is_list(opts), do: ["--embed-font", "0"] ++ opts
+  def externalize_image(opts) when is_list(opts), do: ["--embed-image", "0"] ++ opts
+  def externalize_javascript(opts) when is_list(opts), do: ["--embed-javascript", "0"] ++ opts
+  def externalize_outline(opts) when is_list(opts), do: ["--embed-outline", "0"] ++ opts
+  def split_pages(opts) when is_list(opts), do: ["--split-pages", "1"] ++ opts
 
   defp exec_cmd(opts) do
     cmd = System.find_executable("pdf2htmlex")
