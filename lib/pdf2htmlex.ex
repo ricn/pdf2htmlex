@@ -1,7 +1,14 @@
 defmodule Pdf2htmlex do
 
+  @doc """
+    Adds the path to an input file (PDF) to a list that will be used to build up options that
+    will be used for conversion.
+  """
   def open(pdf) when is_binary(pdf), do: [pdf]
 
+  @doc """
+    Converts the PDF with given options to a output directory
+  """
   def convert_to!(opts, dir) when is_list(opts) do
     exec_cmd(["--dest-dir", dir] ++ opts)
   end
