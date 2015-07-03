@@ -18,9 +18,14 @@ defmodule Pdf2htmlexTest do
     assert File.exists?(tmp_dir <> "simple.html")
   end
 
-  test "convert with all externalize options" do
+  test "convert with all options" do
     tmp_dir = rnd_tmp_dir
     open(@with_images)
+    |> zoom(2.0)
+    |> first_page(1)
+    |> last_page(2)
+    |> fit_width(640)
+    |> fit_height(480)
     |> externalize_css
     |> externalize_font
     |> externalize_image
@@ -36,18 +41,6 @@ defmodule Pdf2htmlexTest do
     assert File.exists?(tmp_dir <> "with_images.outline")
     assert File.exists?(tmp_dir <> "with_images1.page")
     assert File.exists?(tmp_dir <> "with_images2.page")
-  end
-
-  test "convert with first page and last page set" do
-    tmp_dir = rnd_tmp_dir
-    open(@multi_page_pdf) |> first_page(2) |> last_page(4) |> convert_to!(tmp_dir)
-    assert File.exists?(tmp_dir <> "multi_page.html")
-  end
-
-  test "convert with fit width and fit height" do
-    tmp_dir = rnd_tmp_dir
-    open(@simple_pdf) |> fit_width(640) |> fit_height(480) |> convert_to!(tmp_dir)
-    assert File.exists?(tmp_dir <> "simple.html")
   end
 
   test ".open", do: assert [@simple_pdf] == open(@simple_pdf)
