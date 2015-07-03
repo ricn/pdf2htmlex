@@ -22,6 +22,12 @@ defmodule Pdf2htmlexTest do
     assert File.exists?(tmp_dir <> "multi_page.html")
   end
 
+  test "convert with fit width and fit height" do
+    tmp_dir = rnd_tmp_dir
+    open(@simple_pdf) |> fit_width(640) |> fit_height(480) |> save_to(tmp_dir) |> convert!
+    assert File.exists?(tmp_dir <> "simple.html")
+  end
+
   test ".open" do
     assert [@simple_pdf] == open(@simple_pdf)
   end
