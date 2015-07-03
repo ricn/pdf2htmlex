@@ -1,7 +1,9 @@
 defmodule Pdf2htmlex do
   def open(pdf) when is_binary(pdf), do: [pdf]
-  def save_to(opts, dir) when is_list(opts), do: ["--dest-dir", dir] ++ opts
-  def convert!(opts) when is_list(opts), do: exec_cmd opts
+
+  def convert_to!(opts, dir) when is_list(opts) do
+    exec_cmd(["--dest-dir", dir] ++ opts)
+  end
 
   def zoom(opts, zoom_ratio) when is_list(opts) and is_float(zoom_ratio), do: ["--zoom", f_to_s(zoom_ratio)] ++ opts
   def first_page(opts, first) when is_list(opts) and is_integer(first), do: ["--first-page", i_to_s(first)] ++ opts
