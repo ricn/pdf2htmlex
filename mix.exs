@@ -27,6 +27,6 @@ defmodule Pdf2htmlex.Mixfile do
   #
   # Type `mix help deps` for more examples and options
   defp deps do
-    []
+    [{:secure_random, "~> 0.1"}]
   end
 end
