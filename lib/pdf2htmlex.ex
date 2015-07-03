@@ -18,6 +18,16 @@ defmodule Pdf2htmlex do
     ["--last-page", last_p_as_str] ++ opts
   end
 
+  def fit_width(opts, width) when is_list(opts) do
+    width_as_str = Integer.to_string(width)
+    ["--fit-width", width_as_str] ++ opts
+  end
+
+  def fit_height(opts, height) when is_list(opts) do
+    height_as_str = Integer.to_string(height)
+    ["--fit-height", height_as_str] ++ opts
+  end
+
   defp exec_cmd(opts) do
     cmd = System.find_executable("pdf2htmlex")
     System.cmd(cmd, opts, stderr_to_stdout: true)

@@ -42,6 +42,14 @@ defmodule Pdf2htmlexTest do
     assert ["--last-page", "5"] == last_page([], 5)
   end
 
+  test ".fit_width" do
+    assert ["--fit-width", "1024"] == fit_width([], 1024)
+  end
+
+  test ".fit_height" do
+    assert ["--fit-height", "768"] == fit_height([], 768)
+  end
+
   defp rnd_tmp_dir do
     dir = System.tmp_dir! <> "/" <> SecureRandom.uuid <> "/"
     File.mkdir! dir
