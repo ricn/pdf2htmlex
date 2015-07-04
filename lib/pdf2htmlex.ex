@@ -80,7 +80,7 @@ defmodule Pdf2htmlex do
   def split_pages(opts) when is_list(opts), do: ["--split-pages", "1"] ++ opts
 
   defp exec_cmd(opts) do
-    cmd = System.find_executable("pdf2htmlex")
+    cmd = System.find_executable("pdf2htmlEX")
     System.cmd(cmd, opts, stderr_to_stdout: true)
   end
 
