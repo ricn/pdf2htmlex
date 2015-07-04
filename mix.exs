@@ -3,7 +3,7 @@ defmodule Pdf2htmlex.Mixfile do
 
   def project do
     [app: :pdf2htmlex,
-     version: "0.0.1",
+     version: "0.1.0",
      elixir: "~> 1.0",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
