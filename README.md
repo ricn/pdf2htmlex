@@ -3,6 +3,7 @@ Pdf2htmlex
 Elixir library to convert PDF documents to HTML without losing text or format.
 
 [![Build Status](https://travis-ci.org/ricn/pdf2htmlex.png?branch=master)](https://travis-ci.org/ricn/pdf2htmlex)
+[![Hex.pm](https://img.shields.io/hexpm/v/pdf2htmlex.svg)](https://hex.pm/packages/pdf2htmlex)
 
 ## Requirements
 
