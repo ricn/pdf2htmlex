@@ -9,7 +9,7 @@ defmodule Pdf2htmlex.Mixfile do
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      description: description,
-     package: package
+     package: package,
      deps: deps
     ]
   end
@@ -26,7 +26,7 @@ defmodule Pdf2htmlex.Mixfile do
 
   defp deps do
     [
-      {:secure_random, "~> 0.1"},
+      {:secure_random, "~> 0.1", only: :dev},
       {:earmark, "~> 0.1", only: :dev},
       {:ex_doc, "~> 0.7", only: :dev}
     ]
