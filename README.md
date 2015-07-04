@@ -21,18 +21,21 @@ Add this to your `mix.exs` file, then run `mix do deps.get, deps.compile`:
   import Pdf2htmlex
   # Simplest conversion possible.
   open("/Users/ricn/pdfs/sample.pdf") |> convert_to!("/Users/ricn/html")
+
   # Set zoom ratio to 150 % and set horizontal and vertical dpi to 96 for images.
   open("/Users/ricn/pdfs/sample.pdf")
   |> zoom(1.5)
   |> hdpi(96)
   |> vdpi(96)
   |> convert_to!("/Users/ricn/html")
+
   # Set the maximum width to 640 pixels and maximum height to 480 pixels
   open("/Users/ricn/pdfs/sample.pdf")
   |> fit_width(640)
   |> fit_height(480)
   |> convert_to!("/Users/ricn/html")
-  # Converts only 1-10 pages
+
+  # Converts only page 1 to 10
   open("/Users/ricn/pdfs/sample.pdf")
   |> first_page(1)
   |> last_page(10)
