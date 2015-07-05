@@ -52,6 +52,12 @@ defmodule Pdf2htmlexTest do
   test ".externalize_outline", do: assert ["--embed-outline", "0"] == externalize_outline([])
   test ".split_pages", do: assert ["--split-pages", "1"] == split_pages([])
 
+  test "try opening a non existing pdf file" do
+    assert_raise File.Error, fn ->
+      open("meh")
+    end
+  end
+
   defp rnd_tmp_dir do
     dir = System.tmp_dir! <> "/" <> SecureRandom.uuid <> "/"
     File.mkdir! dir

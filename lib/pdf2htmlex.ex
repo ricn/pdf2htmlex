@@ -15,8 +15,12 @@ defmodule Pdf2htmlex do
     Adds the path to an input file (PDF) to a list that will be used to build up options that
     will be used for conversion.
   """
-  def open(pdf) when is_binary(pdf), do: [pdf]
+  def open(pdf_path) when is_binary(pdf_path) do
+    pdf_path = Path.expand(pdf_path)
+    unless File.regular?(pdf_path), do: raise(File.Error, reason: :enoent, action: "read", path: pdf_path)
 
+    [pdf_path]
+  end
   @doc """
     Converts the PDF with given options to a output directory
   """
