@@ -6,8 +6,9 @@ defmodule Pdf2htmlex do
 
     ## Examples
 
-    iex(1)> Pdf2htmlex.open("test/fixtures/simple.pdf") |> Pdf2htmlex.convert_to!("/tmp")
-    iex(2)> Pdf2htmlex.open("test/fixtures/simple.pdf") |> Pdf2htmlex.zoom(2.0) |> Pdf2htmlex.convert_to!("/tmp")
+      iex(1)> Pdf2htmlex.open("test/fixtures/simple.pdf") |> Pdf2htmlex.convert_to!("/tmp")
+
+      iex(2)> Pdf2htmlex.open("test/fixtures/simple.pdf") |> Pdf2htmlex.zoom(2.0) |> Pdf2htmlex.convert_to!("/tmp")
   """
 
   @doc """
