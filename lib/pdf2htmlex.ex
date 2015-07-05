@@ -1,12 +1,13 @@
 defmodule Pdf2htmlex do
   @moduledoc """
     Provides functions to convert PDF documents to HTML.
-    The command line tool [Pdf2HtmlEX](http://coolwanglu.github.io/pdf2htmlEX/) must be installed and needs to be
+    The command line tool [pdf2HtmlEX](http://coolwanglu.github.io/pdf2htmlEX/) must be installed and needs to be
     added to your PATH.
 
     ## Examples
-        iex(1)> Pdf2htmlex.open("test/fixtures/simple.pdf") |> Pdf2htmlex.convert_to!("/tmp")
-        iex(2)> Pdf2htmlex.open("test/fixtures/simple.pdf") |> Pdf2htmlex.zoom(2.0) |> Pdf2htmlex.convert_to!("/tmp")
+
+    iex(1)> Pdf2htmlex.open("test/fixtures/simple.pdf") |> Pdf2htmlex.convert_to!("/tmp")
+    iex(2)> Pdf2htmlex.open("test/fixtures/simple.pdf") |> Pdf2htmlex.zoom(2.0) |> Pdf2htmlex.convert_to!("/tmp")
   """
 
   @doc """
