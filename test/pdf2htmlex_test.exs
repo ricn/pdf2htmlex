@@ -5,6 +5,7 @@ defmodule Pdf2htmlexTest do
   @simple_pdf Path.join(__DIR__, "fixtures/simple.pdf")
   @multi_page_pdf Path.join(__DIR__, "fixtures/multi_page.pdf")
   @with_images Path.join(__DIR__, "fixtures/with_images.pdf")
+  @word_doc  Path.join(__DIR__, "fixtures/word.docx")
 
   test "simplest conversion possible" do
     tmp_dir = rnd_tmp_dir
@@ -55,6 +56,13 @@ defmodule Pdf2htmlexTest do
   test "try opening a non existing pdf file" do
     assert_raise File.Error, fn ->
       open("meh")
+    end
+  end
+
+  test "try converting a word document" do
+    tmp_dir = rnd_tmp_dir
+    assert_raise RuntimeError, fn ->
+      open(@word_doc) |> convert_to!(tmp_dir)
     end
   end
 
