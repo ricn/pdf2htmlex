@@ -5,8 +5,8 @@ defmodule Pdf2htmlexTest do
   @simple_pdf Path.join(__DIR__, "fixtures/simple.pdf")
   @multi_page_pdf Path.join(__DIR__, "fixtures/multi_page.pdf")
   @with_images Path.join(__DIR__, "fixtures/with_images.pdf")
-  @word_doc  Path.join(__DIR__, "fixtures/word.docx")
-
+  @word_doc Path.join(__DIR__, "fixtures/word.docx")
+  @word_doc_with_pdf_ext Path.join(__DIR__, "fixtures/word.pdf")
   test "simplest conversion possible" do
     tmp_dir = rnd_tmp_dir
     open(@simple_pdf) |> convert_to!(tmp_dir)
@@ -63,6 +63,13 @@ defmodule Pdf2htmlexTest do
     tmp_dir = rnd_tmp_dir
     assert_raise RuntimeError, fn ->
       open(@word_doc) |> convert_to!(tmp_dir)
+    end
+  end
+
+  test "try converting a word document with a pdf extension" do
+    tmp_dir = rnd_tmp_dir
+    assert_raise RuntimeError, fn ->
+      open(@word_doc_with_pdf_ext) |> convert_to!(tmp_dir)
     end
   end
 

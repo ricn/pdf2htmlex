@@ -88,10 +88,9 @@ defmodule Pdf2htmlex do
   defp exec_cmd(opts) do
     cmd = System.find_executable("pdf2htmlEX") || ""
     {msg, exit_status} = System.cmd(cmd, opts, stderr_to_stdout: true)
-    if exit_status == 1 do
-      raise RuntimeError, message: msg
+    if exit_status != 0 do
+      raise RuntimeError, message: "The command line tool reported an error: #{msg}"
     end
-
   end
 
   defp i_to_s(s), do: Integer.to_string(s)
