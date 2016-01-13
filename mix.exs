@@ -26,10 +26,10 @@ defmodule Pdf2htmlex.Mixfile do
 
   defp deps do
     [
-      {:secure_random, "~> 0.1", only: :test},
-      {:earmark, "~> 0.1", only: :dev},
-      {:ex_doc, "~> 0.7", only: :dev},
-      {:inch_ex, only: :docs}
+      {:secure_random, "~> 0.2", only: :test},
+      {:earmark, "~> 0.2", only: :dev},
+      {:ex_doc, "~> 0.11", only: :dev},
+      {:inch_ex, "~> 0.4", only: :docs}
     ]
   end
 
